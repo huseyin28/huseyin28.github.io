@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<style type="text/css">
+  *{
+    box-sizing: border-box;
+}
+</style>
+    <title>Hello, world!</title>
+  </head>
+  <body>
+<div class="container">
+   <div class="row justify-content-between" style="border: 1px solid green; height: 100vh;">
+      <div class="col-3" style="background-color: red;">deneme</div>
+      <div class="col-3" style="background-color: red;">deneme</div>
+      <div class="col-3" style="background-color: red;">deneme</div>
+      <div class="col-3" style="background-color: red;">deneme</div>
+      <div class="col-3" style="background-color: red;">deneme</div>
+      <div class="col-3" style="background-color: red;">deneme</div>
+      <div class="col-3" style="background-color: red;">deneme</div>
+      <div class="col-3" style="background-color: red;">deneme</div>
+      <div class="col-3" style="background-color: red;">deneme</div>
+      <div class="col-3" style="background-color: red;">deneme</div>
+      <div class="col-3" style="background-color: red;">deneme</div>
+      <div class="col-3" style="background-color: red;">deneme</div>
+      <div class="col-3" style="background-color: red;">deneme</div>
+   </div>
+</div>
+
+    <!-- <div class="container-fuild" >
+    <div class="row" style="margin: 0; opacity: 1;" id="animateContainer">
+      <div style="background-color: red; height: 50vh;"><img src="https://i.imgur.com/LIaDXiV.jpg" style="height:100vh; width: auto;"></div>
+      <div class="col" style="background-color: orange; height: 100vh; padding: 0; overflow: hidden; position: relative;">
+        <img src="https://qph.fs.quoracdn.net/main-qimg-93c414af988903a49df2baa8f9c07142-c" style="border-left: 3px solid white; ;width:100%; top: 0px; position: absolute; left: 0" id="animate">
+      </div>
+    </div>
+
+    </div> -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      
+      $(document).ready(function(){
+         return;
+        let imgh = $('#animate').height();
+        let winh = $(window).height();
+        let fark = parseInt(winh-imgh);
+        $('#animateContainer').animate({opacity : 1},500,function(){
+          $('#animate').animate({
+            "top" : fark+"px"
+          },5000,function(){
+            $('body').append('<h1 style="position:fixed; top:0; margin:0; background-color:#343333; color:white; left:0; bottom:0; right:0; line-height:100vh; text-align:center;" id="hg">Hoşgeldiniz<span id="load"></span></h1>');
+            $('#animateContainer').animate({opacity : 0},200,function(){
+               let lod = setInterval(function(){
+                  if($('#load').html().length == 3)
+                     $('#load').html('')
+                  else
+                     $('#load').html($('#load').html() + '.');
+               },200);
+               setTimeout(function(){
+                  clearInterval(lod);
+                  $('#hg').remove();
+                  document.title = "Hüseyin Yılmaz";
+               },2000);
+            });
+          });
+        });
+      })
+
+    </script>
+  </body>
+</html>
