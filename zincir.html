@@ -58,7 +58,6 @@
             </tr>
         </thead>
         <tbody>
-            <tr></tr>
         </tbody>
     </table>
     <!-- Optional JavaScript -->
@@ -77,12 +76,13 @@
         let startCopy = new Date(now.getFullYear() + 1, 0, 1);
         let finish = new Date(now.getFullYear() + 2, 0, 1);
         let lastMounth = null;
+        $('table').append('<tr><td>'+mounths[start.getMonth()]+'</td></tr>');
+        lastMounth=start.getMonth();
         if (start.getDay() != 1) {
-            do {
+            while (startCopy.getDay() != 1) {
                 $('table tbody tr:last-child').append('<td></td>');
                 startCopy.setDate(startCopy.getDate() - 1);
             }
-            while (startCopy.getDay() != 1);
         }
         while (finish.toString() !== start.toString()) {
             if ($('table tbody tr:last-child td').length == 15) {
