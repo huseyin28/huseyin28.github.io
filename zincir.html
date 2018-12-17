@@ -11,7 +11,7 @@
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Nunito:300" rel="stylesheet">
     <style>
-        body {
+        body,html {
             font-family: 'Nunito', sans-serif;
         }
 
@@ -23,9 +23,7 @@
 
         .hedef {
             width: 100%;
-            border-width: 1px;
-            border-bottom-style: dashed;
-            border-color: #dee2e6;
+            border-bottom: 2px dashed #cecece;
             margin-bottom: 1rem;
             margin-top: 1rem;
 
@@ -44,32 +42,40 @@
         }
         #input{
             margin-top:50vh;
-            transform: translateY(-50%);
+            transform: translateY(-95%);
+            text-align: center;
+        }
+        #footer{
+            position: fixed;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            height: 40px;
             text-align: center;
         }
     </style>
-    <title>Zinciri Kırma!</title>
+    <title>ZİNCİRİ KIRMA!</title>
 </head>
 
 <body>
     <div class="container">
         <div class="row" id="input">
-            <h1 class="text-center col-12 mb-5"><b>Zinciri Kırma</b></h1><br>
+            <h1 class="text-center col-12 mb-5"><b>ZİNCİRİ KIRMA</b></h1><br>
             <div class="form-group col-2"></div>
             <div class="form-group col-3">
-                <label>Başlangıç</label>
+                <label>BAŞLANGIÇ TARİHİ</label>
                 <input type="date" class="form-control" id="dateStart">
             </div>
             <div class="form-group col-3">
-                <label>Bitiş</label>
+                <label>BİTİŞ TARİHİ</label>
                 <input type="date" class="form-control" id="dateFinish">
             </div>
             <div class="form-group col-2">
-                <button class="btn btn-primary btn-block" style="margin-top:32px;" onclick="create()">Oluştur</button>
+                <button class="btn btn-primary btn-block" style="margin-top:32px;" onclick="create()">OLUŞTUR</button>
             </div>
         </div>
         <div class="row" id="takvim" style="display:none">
-            <h2 class="text-center mt-4">ZİNCİRİ KIRMA</h2>
+            <h1 class="text-center col-12 mt-5"><b>ZİNCİRİ KIRMA</b></h1>
             <label class="hedef">HEDEFİM : </label>
             <table class="table table-bordered">
                 <thead>
@@ -96,6 +102,7 @@
             </table>
         </div>
     </div>
+    <div id="footer">Degign by <a target="_blank" href="https://www.instagram.com/huseyin.yilmaz.28/">Hüseyin Yılmaz</a></div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

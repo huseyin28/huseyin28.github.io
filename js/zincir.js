@@ -13,9 +13,6 @@ function create() {
     let finish = new Date(document.getElementById('dateFinish').value);
 
     var startCopy = new Date(document.getElementById('dateStart').value);
-    console.warn(start.getDate());
-    console.warn(startCopy.getDate());
-    console.warn(finish.getDate());
 
     $('table').append('<tr><td>' + mounths[start.getMonth()] + '</td></tr>');
     let lastMounth = start.getMonth();
@@ -40,5 +37,6 @@ function create() {
         $('table tbody tr:last-child').append('<td></td>');
     }
     $('#input').remove();
+    $('#footer').remove();
     $('#takvim').show();
 }
