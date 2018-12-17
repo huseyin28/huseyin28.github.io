@@ -30,39 +30,67 @@
             margin-top: 1rem;
 
         }
-        .table-bordered td,.table-bordered th{
+
+        .table-bordered td,
+        .table-bordered th {
             border: 2px solid #cecece !important;
+        }
+
+        .table tr td:first-child,
+        .table tr th:first-child,
+        .table {
+            border-width: 0px !important;
+            text-align: right !important;
         }
     </style>
     <title>Zinciri Kırma!</title>
 </head>
 
 <body>
-    <h2 class="text-center mt-4">ZİNCİRİ KIRMA</h2>
-    <label class="hedef">HEDEFİM : </label>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th></th>
-                <th>PT</th>
-                <th>SL</th>
-                <th>ÇR</th>
-                <th>PR</th>
-                <th>CM</th>
-                <th>CT</th>
-                <th>PZ</th>
-                <th>PT</th>
-                <th>SL</th>
-                <th>ÇR</th>
-                <th>PR</th>
-                <th>CM</th>
-                <th>CT</th>
-                <th>PZ</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+    <div class="container">
+        <div class="row" id="input">
+            <h2 class="text-center col-12">Zinciri Kırma</h2>
+            <div class="form-group col-4">
+                <label>Başlangıç</label>
+                <input type="date" class="form-control" id="dateStart">
+            </div>
+
+            <div class="form-group col-4">
+                <label>Bitiş</label>
+                <input type="date" class="form-control" id="dateFinish">
+            </div>
+            <div class="form-group col-4">
+                <button class="btn btn-primary" style="margin-top:32px;" onclick="create()">Oluştur</button>
+            </div>
+        </div>
+        <div class="row" id="takvim" style="display:none">
+            <h2 class="text-center mt-4">ZİNCİRİ KIRMA</h2>
+            <label class="hedef">HEDEFİM : </label>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>PT</th>
+                        <th>SL</th>
+                        <th>ÇR</th>
+                        <th>PR</th>
+                        <th>CM</th>
+                        <th>CT</th>
+                        <th>PZ</th>
+                        <th>PT</th>
+                        <th>SL</th>
+                        <th>ÇR</th>
+                        <th>PR</th>
+                        <th>CM</th>
+                        <th>CT</th>
+                        <th>PZ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -71,37 +99,7 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-    <script>
-        let now = new Date();
-
-        let mounths = ["OCAK","ŞUBAT","MART","NİSAN","MAYIS","HAZİRAN","TEMMUZ","AĞUSTOS","EYLÜL","EKİM","KASIM","ARALIK"];
-        let start = new Date(now.getFullYear() + 1, 0, 1);
-        let startCopy = new Date(now.getFullYear() + 1, 0, 1);
-        let finish = new Date(now.getFullYear() + 2, 0, 1);
-        let lastMounth = null;
-        $('table').append('<tr><td>'+mounths[start.getMonth()]+'</td></tr>');
-        lastMounth=start.getMonth();
-        if (start.getDay() != 1) {
-            while (startCopy.getDay() != 1) {
-                $('table tbody tr:last-child').append('<td></td>');
-                startCopy.setDate(startCopy.getDate() - 1);
-            }
-        }
-        while (finish.toString() !== start.toString()) {
-            if ($('table tbody tr:last-child td').length == 15) {
-                if(lastMounth != start.getMonth()){
-                    $('table').append('<tr><td>'+mounths[start.getMonth()]+'</td></tr>');
-                    lastMounth = start.getMonth();
-               } else
-                    $('table').append('<tr><td></td></tr>');
-            }
-            $('table tbody tr:last-child').append('<td>' + start.getDate() + '</td>');
-            start.setDate(start.getDate() + 1);
-        }
-        while ($('table tbody tr:last-child td').length != 15) {
-            $('table tbody tr:last-child').append('<td></td>');
-        }
-    </script>
+    <script src="js/zincir.js"></script>
 </body>
 
 </html>
