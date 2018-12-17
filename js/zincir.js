@@ -37,6 +37,5 @@ function create() {
         $('table tbody tr:last-child').append('<td></td>');
     }
     $('#input').remove();
-    $('#footer').remove();
     $('#takvim').show();
 }
