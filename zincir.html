@@ -6,13 +6,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <meta name="keywords" content="zinciri,kırma,2019,generator">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Nunito:300" rel="stylesheet">
     <style>
-        body {
+        body,html {
             font-family: 'Nunito', sans-serif;
+            padding-bottom: 50px;
         }
 
         td,
@@ -23,43 +25,96 @@
 
         .hedef {
             width: 100%;
-            border-width: 1px;
-            border-bottom-style: dashed;
-            border-color: #dee2e6;
+            border-bottom: 2px dashed #cecece;
             margin-bottom: 1rem;
             margin-top: 1rem;
 
         }
+
+        .table-bordered td,
+        .table-bordered th {
+            border: 2px solid #cecece !important;
+        }
+
+        .table tr td:first-child,
+        .table tr th:first-child,
+        .table {
+            border-width: 0px !important;
+            text-align: right !important;
+        }
+        #input{
+            margin-top:50vh;
+            transform: translateY(-95%);
+            text-align: center;
+        }
+        #footer{
+            position: fixed;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            height: 40px;
+            text-align: center;
+            background-color: white;
+            line-height: 40px;
+            border-top: 1px solid darkgrey;
+        }
+        #btnBack{
+            position: fixed;
+            top:0;
+            left:0;
+            border-radius: 0px;
+        }
     </style>
-    <title>Zinciri Kırma!</title>
+    <title>ZİNCİRİ KIRMA!</title>
 </head>
 
 <body>
-    <h2 class="text-center mt-4">ZİNCİRİ KIRMA</h2>
-    <label class="hedef">HEDEFİM : </label>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>PT</th>
-                <th>SL</th>
-                <th>ÇR</th>
-                <th>PR</th>
-                <th>CM</th>
-                <th>CT</th>
-                <th>PZ</th>
-                <th>PT</th>
-                <th>SL</th>
-                <th>ÇR</th>
-                <th>PR</th>
-                <th>CM</th>
-                <th>CT</th>
-                <th>PZ</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr></tr>
-        </tbody>
-    </table>
+    <a href="./" class="btn btn-primary d-print-none" id="btnBack">ANASAYFA</a>
+    <div class="container">
+        <div class="row" id="input">
+            <h1 class="text-center col-12 mb-5"><b>ZİNCİRİ KIRMA</b></h1><br>
+            <div class="form-group col-2"></div>
+            <div class="form-group col-3">
+                <label>BAŞLANGIÇ TARİHİ</label>
+                <input type="date" class="form-control" id="dateStart">
+            </div>
+            <div class="form-group col-3">
+                <label>BİTİŞ TARİHİ</label>
+                <input type="date" class="form-control" id="dateFinish">
+            </div>
+            <div class="form-group col-2">
+                <button class="btn btn-primary btn-block" style="margin-top:32px;" onclick="create()">OLUŞTUR</button>
+            </div>
+        </div>
+        <div class="row" id="takvim" style="display:none">
+            <h1 class="text-center col-12 mt-5"><b>ZİNCİRİ KIRMA</b></h1>
+            <label class="hedef">HEDEFİM : </label>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>PT</th>
+                        <th>SL</th>
+                        <th>ÇR</th>
+                        <th>PR</th>
+                        <th>CM</th>
+                        <th>CT</th>
+                        <th>PZ</th>
+                        <th>PT</th>
+                        <th>SL</th>
+                        <th>ÇR</th>
+                        <th>PR</th>
+                        <th>CM</th>
+                        <th>CT</th>
+                        <th>PZ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="footer" class="d-print-none">Design by <a target="_blank" href="https://www.instagram.com/huseyin.yilmaz.28/">Hüseyin Yılmaz</a></div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -68,36 +123,7 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-    <script>
-        let now = new Date();
-
-        let mounths = ["OCAK","ŞUBAT","MART","NİSAN","MAYIS","HAZİRAN","TEMMUZ","AĞUSTOS","EYLÜL","EKİM","KASIM","ARALIK"];
-        let start = new Date(now.getFullYear() + 1, 0, 1);
-        let startCopy = new Date(now.getFullYear() + 1, 0, 1);
-        let finish = new Date(now.getFullYear() + 2, 0, 1);
-        let lastMounth = null;
-        if (start.getDay() != 1) {
-            do {
-                $('table tbody tr:last-child').append('<td></td>');
-                startCopy.setDate(startCopy.getDate() - 1);
-            }
-            while (startCopy.getDay() != 1);
-        }
-        while (finish.toString() !== start.toString()) {
-            if ($('table tbody tr:last-child td').length == 15) {
-                if(lastMounth != start.getMonth()){
-                    $('table').append('<tr><td>'+mounths[start.getMonth()]+'</td></tr>');
-                    lastMounth = start.getMonth();
-               } else
-                    $('table').append('<tr><td></td></tr>');
-            }
-            $('table tbody tr:last-child').append('<td>' + start.getDate() + '</td>');
-            start.setDate(start.getDate() + 1);
-        }
-        while ($('table tbody tr:last-child td').length != 15) {
-            $('table tbody tr:last-child').append('<td></td>');
-        }
-    </script>
+    <script src="js/zincir.js"></script>
 </body>
 
 </html>
