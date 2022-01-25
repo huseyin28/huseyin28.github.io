@@ -1,88 +1,40 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>StreetView Upload</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
+
 <body>
-<div class="container border-secondary border">
-    <div class="row mb-2">
-        <div class="col-12 p-5 bg-secondary text-light">
-            <h1 class="h1 text-center">StreetView Upload</h1>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="location" class="col-sm-2 col-form-label">Location</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="location">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="panoramik" class="col-sm-2 col-form-label">Panoramik</label>
-        <div class="col-sm-10">
-            <input type="file" class="form-control-file" id="panoramik">
-        </div>
-    </div>
 
-    <div class="row bg-light">
-        <div class="col-12 p-2">
-            <button onclick="authenticate().then(loadClient)">authorize and load</button>
-            <button onclick="execute()">execute</button>
-        </div>
-    </div>
-
-
-</div>
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="https://apis.google.com/js/api.js"></script>
-<script>
-    function authenticate() {
-        return gapi.auth2.getAuthInstance().signIn({scope: "https://www.googleapis.com/auth/streetviewpublish"}).then(function () {
-                    console.log("Sign-in successful");
-                },
-                function (err) {
-                    console.error("Error signing in", err);
-                });
-    }
-
-    function loadClient() {
-        return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/streetviewpublish/v1/rest")
-            .then(function () {
-                    console.log("GAPI client loaded for API");
-                },
-                function (err) {
-                    console.error("Error loading GAPI client for API", err);
-                });
-    }
-
-    function execute() {
-        return gapi.client.streetviewpublish.photo.create({
-            "upload_protocol": "raw",
-            "prettyPrint": true,
-            "$.xgafv": "2",
-            "alt": "json",
-            "resource": {
-                "uploadReference": {
-                    "uploadUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Kars_Panorama.JPG"
-                }
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $.ajax({
+            type: "POST",
+            url: "https://app.dipendo.com/oauth/token",
+            data: "username=depo@celsancelik.com&password=12345678&grant_type=password&client_id=DipendoWeb",
+            success: (response) => {
+                get(response.access_token);
             }
-        }).then(function (response) {
-                console.log("Response", response);
-            },
-            function (err) {
-                console.error("Execute error", err);
-            });
-    }
+        })
 
-    gapi.load("client:auth2", function () {
-        gapi.auth2.init({client_id: "110220073867660383828"});
-    });
-</script>
+        function get(token) {
+            $.ajax({
+                url: "https://app.dipendo.com/purchase-items/48716/detail",
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiJ9.eyJuYW1laWQiOiI0MyIsInVuaXF1ZV9uYW1lIjoiaHVzZXlpbnlpbG1hekBjZWxzYW5jZWxpay5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL2FjY2Vzc2NvbnRyb2xzZXJ2aWNlLzIwMTAvMDcvY2xhaW1zL2lkZW50aXR5cHJvdmlkZXIiOiJBU1AuTkVUIElkZW50aXR5IiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiJiZTZhZWFhMS1mOThmLTQ5MmMtODViNy00YzU0NzdiZWI5MDQiLCJTdG9jayI6IjEiLCJFZGl0VXNlcnMiOiIxIiwiVmlld0Nvc3QiOiIxIiwiRWRpdEN1c3RvbWVycyI6IjEiLCJWaWV3UmVwb3J0cyI6IjEiLCJQdXJjaGFzZSI6IjEiLCJFZGl0UHVyY2hhc2VzIjoiMSIsIkVkaXRQdXJjaGFzZUl0ZW1zIjoiMSIsIkVkaXRQdXJjaGFzZUl0ZW1zUHVyY2hhc2VDb3VudCI6IjEiLCJTYWxlIjoiMSIsIkVkaXRTYWxlcyI6IjEiLCJWaWV3U2FsZXMiOiIxIiwiRWRpdFNhbGVJdGVtcyI6IjEiLCJDYWxlbmRhciI6IjEiLCJFZGl0U3VwcGxpZXJzIjoiMSIsIkVkaXRQcm9kdWN0cyI6IjEiLCJUZW5hbnQiOiI4MTAyNmRhMC0xMjQ4LTRkNWMtYjc3OC1iN2YxNjg3YzBhOWMiLCJDdWx0dXJlIjoidHItVFIiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0L0RpcGVuZG8uQVBJLyIsImF1ZCI6ImM5MmQ1ZTQ1OGI1NmUyNDMyOGVmMzE1NWEwZGU1YmE3IiwiZXhwIjoxNjQ1NjA0MDI4LCJuYmYiOjE2NDMwMTIwMjh9.lepN1iiAsVdtHA8jhjR8E9vF0qDWccs4mU_TocpWuMyrojiIJPK4zoNCE5q1fRPOTSm_cMuCNE8y1iVq0FosHg'
 
+                },
+                success: response => {
+                    console.log(response);
+                }
+            })
+        }
+    </script>
 </body>
+
 </html>
