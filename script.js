@@ -4,8 +4,8 @@ function Hesapla() {
     let gobek_capi = makara_capi - cm2mm(Number($('#derinlik').val()) * 2)
     let h = cm2mm(Number($('#aralik').val()))
 
-    let brutHacim = getVolume(makara_capi, h)
-    let gobekHacim = getVolume(gobek_capi, h)
+    let brutHacim = getVolume(makara_capi/2, h)
+    let gobekHacim = getVolume(gobek_capi/2, h)
     let netHacim = brutHacim - gobekHacim
 
     let halatHacim = Math.pow(halat,2) * cm2mm(100)
