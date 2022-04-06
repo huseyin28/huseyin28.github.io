@@ -1,7 +1,7 @@
 function Hesapla() {
     let halat = Number($('#dia').val())
     let makara_capi = cm2mm(Number($('#makara_cap').val()))
-    let gobek_capi = cm2mm(makara_capi - Number($('#derinlik').val()))
+    let gobek_capi = makara_capi - cm2mm(Number($('#derinlik').val()) * 2)
     let h = cm2mm(Number($('#aralik').val()))
 
     let brutHacim = getVolume(makara_capi, h)
