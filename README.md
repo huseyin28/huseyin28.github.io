@@ -1,4 +1,3 @@
-# [İnstagram](https://www.instagram.com/huseyin.yilmaz.28/)
+İşlerimi kolaylaştırmak ve hızlandırmak adına yaptığım uygulamalar burada yer alacak.
+
 # [Live View](https://huseyin28.github.io/)
-# [Zinciri Kırma](https://huseyin28.github.io/zincir)
-# [BAŞTAN SONA](https://www.youtube.com/watch?v=Cwo6JCsJre8&list=PLSTCOEvtX7NDv3rza2aBBF3fOjqJUFBmA)
