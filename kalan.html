@@ -21,7 +21,7 @@
 
 <body id="page-top">
     <div id="wrapper">
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-warehouse"></i>
@@ -60,13 +60,13 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="pid">Ürün Kimliği</label>
-                                        <input type="number" class="form-control" id="pid" value="53701">
+                                        <input type="number" class="form-control" id="pid">
                                     </div>
                                     <button class="btn btn-primary" onclick="Getir()">Getir</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-lg-4 mt-2 ">
+                        <div class="col-12 mt-2 ">
                             <div class="card">
                                 <div class="card-body">
                                     <table class="table table-bordered">
@@ -78,11 +78,56 @@
                                             <td>Stok Miktarı : </td>
                                             <td id="stockCount"></td>
                                         </tr>
-                                        <tr>
-                                            <td>Revize Edilebilir : </td>
-                                            <td id="reservableCount"></td>
-                                        </tr>
                                     </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-2">
+                            <div class="accordion" id="accordionExample">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left" type="button"
+                                                data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                                aria-controls="collapseOne">
+                                                Kesilecek <span class="badge badge-secondary float-right"  id="kesileceklerToplam"></span>
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                        data-parent="#accordionExample">
+                                        <div class="card-body text-nowrap overflow-hidden" style="overflow: hidden !important; text-overflow: ellipsis;" id="kesilecekler"></div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                                data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                                aria-controls="collapseTwo">
+                                                Bekleyen <span class="badge badge-warning float-right" id="bekleyenlerToplam"></span>
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                        <div class="card-body text-nowrap overflow-hidden" style="overflow: hidden !important; text-overflow: ellipsis;" id="bekleyenler"></div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingThree">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                                data-toggle="collapse" data-target="#collapseThree"
+                                                aria-expanded="false" aria-controls="collapseThree">
+                                                Gönderilen <span class="badge badge-success float-right" id="gonderilenlerToplam"></span>
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div  id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                        data-parent="#accordionExample">
+                                        <div class="card-body text-nowrap overflow-hidden" style="overflow: hidden !important; text-overflow: ellipsis;" id="gonderilenler"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +148,7 @@
     <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
 
     <script src="public/vendor/jquery/jquery.min.js"></script>
-    <script src="public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="public/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="public/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="public/js/sb-admin-2.min.js"></script>
     <script src="public/script/Auth.js"></script>
