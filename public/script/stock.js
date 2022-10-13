@@ -2,6 +2,10 @@
 function Getir() {
     const ID = $('#pid').val()
 
+    let not = new Audio('/public/sound.mp3')
+
+    not.play();
+
     getStockCount(ID || 53701)
 }
 
