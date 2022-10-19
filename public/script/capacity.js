@@ -7,6 +7,7 @@ function Start() {
     let h = cm2mm(Number($('#aralik').val()))
 
     let limit = hesapla(halat, makara_capi, gobek_capi, h)
+
     let tavsiye = hesapla(halat, makara_capi-getPay(halat), gobek_capi, h)
 
     ekranaYaz(limit, tavsiye)
@@ -23,10 +24,11 @@ function getPay(halat) {
     if (halat < 26)
         return 50;
     else
-        halat * 2
+        return halat * 2
 }
 
 function hesapla(halat, makaraCap, gobekCap, h) {
+    console.log(halat, makaraCap, gobekCap, h);
     let brutHacim = getVolume(makaraCap/2, h)
     let gobekHacim = getVolume(gobekCap/2, h)
     let netHacim = brutHacim - gobekHacim
