@@ -2,10 +2,6 @@
 function Getir() {
     const ID = $('#pid').val()
 
-    let not = new Audio('https://www.epidemicsound.com/track/FypLhSp7Hx/')
-
-    not.play();
-
     getStockCount(ID || 53701)
 }
 
