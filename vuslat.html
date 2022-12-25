@@ -11,6 +11,12 @@
         body{
             font-family: 'Unbounded', cursive;
         }
+        h1{
+            font-size: 76pt;
+            line-height: 90vh;
+            width: 100%;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -20,11 +26,13 @@
         const dtnow = Date.now();
         const dthedef = new Date(2023, 00, 19, 08, 30, 0, 0);
         let fark = null;
+        yaz();
+        setInterval(yaz, 10000)
 
-        setInterval(function () {
+        function yaz () {
             fark = dthedef - dtnow;
-            document.getElementById("demo").innerHTML = Math.ceil(fark / (1000 * 60 * 60 * 24));
-        }, 1000)
+            document.getElementById("demo").innerHTML = Math.ceil(fark / (1000 * 60 * 60 * 24))+' gün kaldı';
+        }
     </script>
 </body>
 
