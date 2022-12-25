@@ -1,32 +1,15 @@
-loginControl = false
-function Getir() {
+async function Getir() {
     const ID = $('#pid').val()
 
-    console.log('control storage');
-    if (localStorage.getItem('token') == null) {
-        console.log('storage null go login')
-        login()
-    } else {
-        console.log('go getCount')
+    let control = await loginControl();
+    if(control){
         getStockCount(ID || 53701)
-    }
-
-}
-
-function login() {
-    if (!loginControl) {
-        $.ajax({
-            type: "POST",
-            url: 'https://app.dipendo.com/oauth/token',
-            data: { "username": "huseyinyilmaz@celsancelik.com", "password": "asdasd528", "grant_type": "password", "client_id": "DipendoWeb" }
-        }).then(response => {
-            localStorage.setItem('token', response.token_type + ' ' + response.access_token);
-            console.log('token loaded and set go init');
-            Getir();
-            loginControl = true
-        }).fail(err => {
-            console.log(err);
-        })
+    }else{
+        if(await login()){
+            getStockCount(ID || 53701)
+        }else{
+            alert('İşlem başarısız lütfen daha sonra tekrar deneyin')
+        }
     }
 }
 
@@ -37,14 +20,13 @@ function getStockCount(pid) {
             Authorization: localStorage.getItem('token')
         }
     }).then(response => {
-        console.log('data load')
-        $('#purchaseCount').html(response.purchaseCount);
-        $('#stockCount').html(response.stockCount);
+        console.log(response)
+        $('#purchaseCount').html(response.purchaseCount+' m');
+        $('#stockCount').html(response.stockCount+' m');
+        $('#txtPid').html(response.purchaseItemId);
         getOthers(response.product.id, pid)
     }).fail(err => {
-        console.log('data load error')
         if (err.status == 401) {
-            console.log('token geçersiz go login')
             login()
         }
         console.log(err);
@@ -66,7 +48,7 @@ function GetStatu1(productId, PurItemId) {
         $('#kesilecekler').html('')
         response.forEach(element => {
             if (element.purchaseItem.purchaseItemId == PurItemId) {
-                $('#kesilecekler').append(`( ${element.saleCount} ) ${element.customer.title} <br>`)
+                $('#kesilecekler').append(`( ${element.saleCount}m ) ${element.customer.title} <br>`)
                 toplam += element.saleCount
             }
         });
@@ -84,7 +66,7 @@ function GetStatu2(productId, PurItemId) {
         $('#bekleyenler').html('')
         response.forEach(element => {
             if (element.purchaseItem.purchaseItemId == PurItemId)
-                $('#bekleyenler').append(`( ${element.saleCount} ) ${element.customer.title} <br>`)
+                $('#bekleyenler').append(`( ${element.saleCount}m ) ${element.customer.title} <br>`)
             toplam += element.saleCount
         });
         $('#bekleyenlerToplam').html(toplam)
@@ -101,7 +83,7 @@ function GetStatu3(productId, PurItemId) {
         $('#gonderilenler').html('')
         for (let i = response.length - 1; i >= 0; i--) {
             if (response[i].purchaseItem.purchaseItemId == PurItemId) {
-                $('#gonderilenler').append(`( ${response[i].saleCount} ) ${response[i].customer.title} <br>`)
+                $('#gonderilenler').append(`( ${response[i].saleCount}m ) ${response[i].customer.title} <br>`)
                 toplam += response[i].saleCount
             }
         }

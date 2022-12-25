@@ -1,1 +1,29 @@
-const Authorization = `Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IkIzNzkxNUQ1QUYzMkNBM0ZBNzhDNzlERjg5NDUxRTREQkM4NzgyREYiLCJ4NXQiOiJzM2tWMWE4eXlqLW5qSG5maVVVZVRieUhndDgiLCJ0eXAiOiJhdCtqd3QifQ.eyJzdWIiOiI2MmIwZGJjZmVkNTAwNDU5NGNmYzIwNzkiLCJuYW1lIjoiaHVzZXlpbnlpbG1hekBjZWxzYW5jZWxpay5jb20iLCJTdG9jayI6IjEiLCJFZGl0VXNlcnMiOiIxIiwiVmlld0Nvc3QiOiIxIiwiRWRpdEN1c3RvbWVycyI6IjEiLCJWaWV3UmVwb3J0cyI6IjEiLCJQdXJjaGFzZSI6IjEiLCJFZGl0UHVyY2hhc2VzIjoiMSIsIkVkaXRQdXJjaGFzZUl0ZW1zIjoiMSIsIkVkaXRQdXJjaGFzZUl0ZW1zUHVyY2hhc2VDb3VudCI6IjEiLCJTYWxlIjoiMSIsIkVkaXRTYWxlcyI6IjEiLCJWaWV3U2FsZXMiOiIxIiwiRWRpdFNhbGVJdGVtcyI6IjEiLCJDYWxlbmRhciI6IjEiLCJFZGl0U3VwcGxpZXJzIjoiMSIsIkVkaXRQcm9kdWN0cyI6IjEiLCJUZW5hbnQiOiI4MTAyNmRhMC0xMjQ4LTRkNWMtYjc3OC1iN2YxNjg3YzBhOWMiLCJDdWx0dXJlIjoidHItVFIiLCJvaV9wcnN0IjoiRGlwZW5kb1dlYiIsImNsaWVudF9pZCI6IkRpcGVuZG9XZWIiLCJvaV90a25faWQiOiI2Mzc1MWMwNmI3MjFjYmZhOGFiYjk3OWQiLCJhdWQiOiJEaXBlbmRvV2ViIiwiZXhwIjoxNjcxMjExMjcwLCJpc3MiOiJodHRwczovL2lkLmRpcGVuZG8uY29tLyIsImlhdCI6MTY2ODYxOTI3MH0.D1hyA78OhiROMFbjqpJLIaCW-6pvGq53GUpdudQVip6kfmRfkgUZ0snWIXEhSBrUDaF_FEgz7NlqZ1ZTL4pIMopJH6PohoZUBOp7Tdnl_5sksWnCCoYauEB1J48YSsta7lD4mTGUe6JGCPNqUIRNIbFir-5l_2PbtFFY2NMeuEqM5uJo_WWXDdylWjG3hzHyZvnVym4hbpiWNtfv89VE8M5dWFnC8R5vlpdLs1RDyKbJne85DzhvMZTUoEpKXtwnlP0J68-xYn5WCzEfGO_Ilk9XQ_VabOk5U12AkLpwUuEYVDkt3L6ox6ogf4RzGXtuBfVQb5KacuwH9FrxTZVyzYA`;
+function login() {
+    let rt = false;
+    $.ajax({
+        type: "POST",
+        async : false,
+        url: 'https://app.dipendo.com/oauth/token',
+        data: { "username": "huseyinyilmaz@celsancelik.com", "password": "asdasd528", "grant_type": "password", "client_id": "DipendoWeb" },
+        success: response => {
+            localStorage.setItem('token', response.token_type + ' ' + response.access_token);
+            rt = true
+        }
+    })
+    return rt
+}
+
+function loginControl() {
+    let rt = false;
+    $.ajax({
+        async: false,
+        url: 'https://app.dipendo.com/api/product-groups?offset=0&limit=10000&isActive=true',
+        headers: {
+            Authorization: localStorage.getItem('token')
+        },
+        success: response => {
+            rt = true
+        }
+    })
+    return rt
+}
