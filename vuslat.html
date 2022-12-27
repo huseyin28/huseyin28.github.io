@@ -9,11 +9,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200&display=swap" rel="stylesheet">
     <style>
         body{
+            background-image: url('public/img/biz.jpeg');
             font-family: 'Unbounded', cursive;
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+            background-position: center;
         }
         h1{
             font-size: 32pt;
-            line-height: 90vh;
             width: 100%;
             text-align: center;
             white-space: nowrap;
@@ -24,15 +27,31 @@
 <body>
     <h1 id="demo"></h1>
     <script>
-        const dtnow = Date.now();
-        const dthedef = new Date(2023, 00, 28, 08, 30, 0, 0);
-        let fark = null;
+        // alert("SENİ ÇOK SEVİYORUM BİRTANEMMMMMMM")
+        
         yaz();
-        setInterval(yaz, 10000)
+        setInterval(yaz, 1000)
 
         function yaz () {
+            let dtnow = Date.now();
+            let dthedef = new Date(2023, 00, 28, 08, 30, 0, 0);
+            let fark = null;
+            console.log("-");
             fark = dthedef - dtnow;
-            document.getElementById("demo").innerHTML = Math.ceil(fark / (1000 * 60 * 60 * 24))+' gün kaldı';
+            let day = Math.floor(fark / (1000 * 60 * 60 * 24));
+            fark -= day * (1000 * 60 * 60 * 24);
+            let saat = Math.floor(fark / (1000 * 60 * 60));
+            fark -= saat * (1000 * 60 * 60);
+            let dakika = Math.floor(fark / (1000 * 60));
+            fark -= dakika * (1000 * 60);
+            let saniye = Math.floor(fark / (1000));
+
+            document.getElementById("demo").innerHTML = 
+            `${day} gün<br>
+            ${saat} saat<br>
+            ${dakika} dakika <br>
+            ${saniye} saniye <br>
+            kaldı`;
         }
     </script>
 </body>
