@@ -7,54 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aşka Vuslat</title>
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200&display=swap" rel="stylesheet">
-    <style>
-        body{
-            background-image: url('public/img/biz.jpeg');
-            font-family: 'Unbounded', cursive;
-            background-size: 100%;
-            background-repeat: no-repeat;
-        }
-        h1{
-            font-size: 32pt;
-             background-color: rgba(0, 0, 0, 0.2);
-             color: white;
-            width: 100%;
-            text-align: center;
-            white-space: nowrap;
-        }
-    </style>
+    <link rel="stylesheet" href="mylove/style.css">
 </head>
 
 <body>
-    <h1 id="demo"></h1>
-    <script>
-        alert("SENİ ÇOK SEVİYORUM BİRTANEMMMMMMM")
-        
-        yaz();
-        setInterval(yaz, 1000)
-
-        function yaz () {
-            let dtnow = Date.now();
-            let dthedef = new Date(2023, 00, 28, 08, 30, 0, 0);
-            let fark = null;
-            console.log("-");
-            fark = dthedef - dtnow;
-            let day = Math.floor(fark / (1000 * 60 * 60 * 24));
-            fark -= day * (1000 * 60 * 60 * 24);
-            let saat = Math.floor(fark / (1000 * 60 * 60));
-            fark -= saat * (1000 * 60 * 60);
-            let dakika = Math.floor(fark / (1000 * 60));
-            fark -= dakika * (1000 * 60);
-            let saniye = Math.floor(fark / (1000));
-
-            document.getElementById("demo").innerHTML = 
-            `${day} gün<br>
-            ${saat} saat<br>
-            ${dakika} dakika <br>
-            ${saniye} saniye <br>
-            kaldı`;
-        }
-    </script>
+    <div class="info"></div>
+    <div class="counter"></div>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="mylove/script.js"></script>
 </body>
 
 </html>
