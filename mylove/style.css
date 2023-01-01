@@ -2,9 +2,9 @@ body {
     
     background-image: url('../public/img/biz.jpeg');
     font-family: 'Unbounded', cursive;
-    background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position: top;
+    background-position-x: center;
 }
 
 h1 {
