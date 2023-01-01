@@ -46,7 +46,7 @@ let meetings = [
         fileName : "20221009.jpg"
     },
     {
-        date : "9. Buluşma <br> 10 Aralık 2022",
+        date : "10. Buluşma <br> 10 Aralık 2022",
         dtObj : new Date(2022,11,10),
         fileName : "20221210.jpg"
     }
