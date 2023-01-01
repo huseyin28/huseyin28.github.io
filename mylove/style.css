@@ -41,3 +41,18 @@ h1 {
     font-size: 32px;
     line-height: 75px;
 }
+
+#nekadar{
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: cornflowerblue;
+    left: 5px;
+    top: 40vh;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    box-shadow: 1px 1px 5px black;
+}

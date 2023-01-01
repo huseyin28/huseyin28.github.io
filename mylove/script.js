@@ -55,6 +55,19 @@ let meetings = [
 $(document).ready(function(){
     runCounter();
     setInterval(changeBgImg, 5000)
+    $('#nekadar').on('click',function(){
+        let start = new Date(2020, 5,3);
+        let now = Date.now();
+        let fark = now - start;
+        
+        let day = Math.floor(fark / (1000 * 60 * 60 * 24));
+
+        let yil = Math.floor(day / 365);
+        let ay = Math.floor((day - (yil * 365)) / 31)
+        let gun = Math.floor(((fark / (1000 * 60 * 60 * 24)) - ((yil * 365) + (ay * 31))) )
+
+        alert(`${yil} yıl, ${ay} ay, ${gun} gündür beraberiz`)
+    })
 })
 
 function changeBgImg(){
