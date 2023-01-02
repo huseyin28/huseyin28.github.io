@@ -53,7 +53,8 @@ let meetings = [
 ]
 
 $(document).ready(function(){
-    runCounter();
+    runCounter()
+    changeBgImg()
     setInterval(changeBgImg, 5000)
     $('#nekadar').on('click',function(){
         let start = new Date(2020, 5,3);
