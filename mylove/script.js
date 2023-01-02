@@ -73,9 +73,11 @@ $(document).ready(function(){
             dmonth--;
             dday += 31;
         }
-        $(`<div id="alert" class="alert alert-primary">${dyear} yıl, ${dmonth} ay, ${dday} gündür beraberiz</div>`).appendTo('body').delay(2000).queue(function (next) {
-            $(this).remove();
-        });
+        $(`<div id="alert" class="alert alert-primary">${dyear} yıl, ${dmonth} ay, ${dday} gündür beraberiz
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>`).appendTo('body');
     })
 })
 
