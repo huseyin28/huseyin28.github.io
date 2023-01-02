@@ -58,16 +58,24 @@ $(document).ready(function(){
     setInterval(changeBgImg, 5000)
     $('#nekadar').on('click',function(){
         let start = new Date(2020, 5,3);
-        let now = Date.now();
-        let fark = now - start;
+        let now = new Date(Date.now());
+
+        let dyear = now.getFullYear() - start.getFullYear();
+
+        let dmonth = now.getMonth()-start.getMonth();
+        if(dmonth < 0){
+            dyear--;
+            dmonth += 12;
+        }
         
-        let day = Math.floor(fark / (1000 * 60 * 60 * 24));
-
-        let yil = Math.floor(day / 365);
-        let ay = Math.floor((day - (yil * 365)) / 31)
-        let gun = Math.floor(((fark / (1000 * 60 * 60 * 24)) - ((yil * 365) + (ay * 31))) )
-
-        alert(`${yil} yıl, ${ay} ay, ${gun} gündür beraberiz`)
+        let dday = now.getDate()-start.getDate();
+        if(dday < 0){
+            dmonth--;
+            dday += 31;
+        }
+        $(`<div id="alert" class="alert alert-primary">${dyear} yıl, ${dmonth} ay, ${dday} gündür beraberiz</div>`).appendTo('body').delay(2000).queue(function (next) {
+            $(this).remove();
+        });
     })
 })
 

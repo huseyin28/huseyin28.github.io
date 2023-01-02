@@ -56,3 +56,10 @@ h1 {
     font-size: 24px;
     box-shadow: 1px 1px 5px black;
 }
+
+#alert{
+    position: fixed;
+    top: 40vh;
+    left: 40px;
+    right: 10px;
+}
