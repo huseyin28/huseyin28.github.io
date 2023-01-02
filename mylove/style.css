@@ -1,6 +1,6 @@
 body {
     
-    background-image: url('../public/img/biz.jpeg');
+    background-image: url('../public/img/biz.jpeg'); 
     font-family: 'Unbounded', cursive;
     background-size: cover;
     background-repeat: no-repeat;
@@ -44,22 +44,23 @@ h1 {
 
 #nekadar{
     position: fixed;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: cornflowerblue;
     left: 5px;
     top: 40vh;
-    line-height: 30px;
-    text-align: center;
+    border-radius: 50%;
+    padding: 2px;
+    background-color: rgb(255, 255, 255);
     color: white;
-    font-size: 24px;
-    box-shadow: 1px 1px 5px black;
+    font-size: 30px;
 }
+#nekadar i{
+    display: block;
+    float: left;
+}
+
 
 #alert{
     position: fixed;
     top: 40vh;
     left: 40px;
-    right: 10px;
+    line-height: 26px;
 }

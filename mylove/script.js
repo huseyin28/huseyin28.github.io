@@ -74,7 +74,7 @@ $(document).ready(function(){
             dday += 31;
         }
         $(`<div id="alert" class="alert alert-primary">${dyear} yıl, ${dmonth} ay, ${dday} gündür beraberiz
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <button type="button" class="close ml-3" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
         </div>`).appendTo('body');
