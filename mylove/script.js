@@ -15,5 +15,5 @@ $(document).ready(function () {
         dmonth--;
         dday += 31;
     }
-    $('.elapsedTime').html(`${dyear} yıl, ${dmonth} ay, ${dday} gün`);
+    $('#neKadar').html(`${dyear} yıl, ${dmonth} ay, ${dday} gün`);
 })
