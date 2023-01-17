@@ -13,7 +13,7 @@ function getBulusmalar(){
             $('#bulusmalar').html('')
             response.forEach((element, index) => {
                 $('#bulusmalar').append(`<div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box" href="assets/img/portfolio/fullsize/1.jpg" title="${index + 1}. Buluşma">
+                    <a class="portfolio-box" href="#" title="${index + 1}. Buluşma">
                         <img class="img-fluid" src="images/${index + 1}.png" alt="..." />
                         <div class="portfolio-box-caption">
                             <div class="project-name">${index + 1}. Buluşma</div>
