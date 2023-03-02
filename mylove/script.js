@@ -8,7 +8,7 @@ $(document).ready(function () {
 
 function getBulusmalar(){
     $.ajax({
-        url : "./meetings.json",
+        url : "/mylove/meetings.json",
         success : response => {
             $('#bulusmalar').html('')
             response.forEach((element, index) => {
