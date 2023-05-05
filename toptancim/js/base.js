@@ -3,7 +3,20 @@ $(document).ready(init)
 function init() {
     SetEvents();
     getChatList();
+    $('#txtMessage').off('keydown').on('keydown',keydown)
+    $('#btnSend').off('click').on('click',sendMessage)
 }
+
+function keydown(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      document.getElementById("btnSend").click();
+    }
+  }
+
+  function sendMessage(){
+    console.log($('#txtMessage').val());
+  }
 
 function getChatList(){
     $.ajax({
@@ -26,6 +39,10 @@ function getChatList(){
         }
     });
 } 
+
+function closeMessage(e){
+    $(e).parent().parent().parent().remove()
+}
 
 function getChatListItemHTML(item){
     return `<a class="dropdown-item d-flex align-items-center" href="#">

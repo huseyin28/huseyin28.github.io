@@ -50,14 +50,15 @@
 					<ul class="navbar-nav ml-auto">
 						<!-- Nav Item - Messages -->
 						<li class="nav-item dropdown no-arrow mx-1">
-							<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="fas fa-envelope fa-fw"></i>
 								<!-- Counter - Messages -->
 								<span class="badge badge-danger badge-counter" id="messageCount"></span>
 							</a>
 							<!-- Dropdown - Messages -->
-							<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" id="messages">
+							<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+								id="messages">
 								<h6 class="dropdown-header">
 									Message Center
 								</h6>
@@ -96,7 +97,8 @@
 								</a>
 								<a class="dropdown-item d-flex align-items-center" href="#">
 									<div class="dropdown-list-image mr-3">
-										<img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
+										<img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+											alt="...">
 										<div class="status-indicator bg-success"></div>
 									</div>
 									<div>
@@ -112,12 +114,13 @@
 						<div class="topbar-divider d-none d-sm-block"></div>
 
 						<li class="nav-item dropdown no-arrow">
-							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<span class="mr-2 d-none d-lg-inline text-gray-600 small">Kullanıcı</span>
 								<img class="img-profile rounded-circle" src="img/undraw_profile.svg">
 							</a>
-							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+								aria-labelledby="userDropdown">
 								<a class="dropdown-item" href="#">
 									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 									Profile
@@ -261,11 +264,51 @@
 
 
 	<div class="messagesContainer">
-		<div class="card shadow border border-dark">
-			<div class="card-header py-3 bg-secondary text-white">
-				<h6 class="m-0 font-weight-bold">Hüseyin Yılmaz</h6>
+		<div class="card shadow border border-primary">
+			<div class="card-header py-3 bg-primary text-white">
+				<h6 class="m-0 font-weight-bold">Hüseyin Yılmaz
+					<button type="button" onclick="closeMessage(this)" class="close" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</h6>
 			</div>
 			<div class="card-body">
+				<div class="message me">
+					Merhaba ürün hala satılık mı
+				</div>
+				<div class="message me">
+					Merhaba ürün hala satılık mı
+				</div>
+				<div class="message me">
+					Merhaba ürün hala satılık mı
+				</div>
+				<div class="message me">
+					Merhaba ürün hala satılık mı
+				</div>
+				<div class="message me">
+					Merhaba ürün hala satılık mı
+				</div>
+				<div class="message me">
+					Merhaba ürün hala satılık mı
+				</div>
+				<div class="message me">
+					Merhaba ürün hala satılık mı
+				</div>
+				<div class="message me">
+					Merhaba ürün hala satılık mı
+				</div>
+				<div class="message me">
+					Merhaba ürün hala satılık mı
+				</div>
+				<div class="message me">
+					Merhaba ürün hala satılık mı
+				</div>
+				<div class="message me">
+					Merhaba ürün hala satılık mı
+				</div>
+				<div class="message me">
+					Merhaba ürün hala satılık mı
+				</div>
 				<div class="message me">
 					Merhaba ürün hala satılık mı
 				</div>
@@ -277,9 +320,9 @@
 				</div>
 			</div>
 			<div class="input-group p-3">
-				<input type="text" class="form-control" aria-describedby="basic-addon2">
+				<input type="text" class="form-control" id="txtMessage">
 				<div class="input-group-append">
-					<button class="btn btn-outline-secondary" type="button">Gönder</button>
+					<button class="btn btn-outline-secondary" type="button" id="btnSend">Gönder</button>
 				</div>
 			</div>
 		</div>

@@ -16,6 +16,7 @@
 
 .messagesContainer .card .card-body {
   height: 400px;
+  overflow-y: auto;
 }
 
 .messagesContainer .card .message {
