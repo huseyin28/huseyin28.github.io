@@ -9,16 +9,11 @@
 
 <body>
   <div id="qr-reader" style="width:500px"></div>
-  <div id="qr-reader-results"></div>
 
   <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
   <script>
-    var lastResult;
-
     function onScanSuccess(decodedText, decodedResult) {
-      if (decodedText !== lastResult) {
-        alert(decodedText)
-      }
+      location.assign('./productDetail.html'+decodedText.replaceAll('dipendo://info',''))
     }
 
     var html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 250 });
