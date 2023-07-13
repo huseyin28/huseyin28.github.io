@@ -11,27 +11,27 @@
 
 <body>
     <div class="container">
-        <p class="h5" id="name"></p>
-        <hr>
-        <table class="table table-bordered">
-            <tr>
-                <td>Ürün ID</td>
-                <td id="pid"></td>
-            </tr>
-            <tr>
-                <td>Stok Miktarı</td>
-                <td id="stockCount"></td>
-            </tr>
-        </table>
-        <div class="d-grid gap-2">
-            <a class="btn btn-primary btn-block" href="./qrcode.html" role="button">Geri Dön</a>
+        <div class="card my-3">
+            <div class="card-body">
+                <h5 class="card-title" id="name"></h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">Ürün Kimliği : <span id="pid"></span></h6>
+                <p class="card-text lead">Stok miktarı <b><span class="text-danger" id="stockCount"></span></b></p>
+            </div>
         </div>
-        <hr>
-        <b>Hazırlanacaklar</b>
-        <table class="table table-bordered" id="tblStatu1"></table>
-        <hr>
-        <b>Sevke Hazırlar</b>
-        <table class="table table-bordered" id="tblStatu2"></table>
+        <a class="btn btn-primary btn-block float-end mb-3" href="./qrcode.html" role="button">Geri Dön</a>
+        
+        <div class="card mb-3 w-100">
+            <div class="card-body">
+                <h5 class="card-title">Hazırlanacaklar</h5>
+                <ul class="list-group" id="tblStatu1"></ul>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Sevke Hazırlar</h5>
+                <ul class="list-group" id="tblStatu2"></ul>
+            </div>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
@@ -39,12 +39,12 @@
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
     <script>
-        let birimler = {'meter' : 'm'}
+        let birimler = { 'meter': 'm' }
         $(document).ready(init)
 
-        function init(){
+        function init() {
             const searchParams = new URLSearchParams(location.search);
-    
+
             if (searchParams.has("id")) {
                 $.ajax({
                     url: `https://app.dipendo.com/api/purchase-items/${searchParams.get("id")}`,
@@ -58,7 +58,7 @@
                     GetStatu2(response.product.id, response.purchaseItemId)
                 }).fail(error => {
                     if (error.status == 401)
-                        if(Login())
+                        if (Login())
                             location.reload();
                 })
             }
@@ -91,11 +91,8 @@
             }).then(response => {
                 response.forEach(element => {
                     if (element.purchaseItem.purchaseItemId == PurItemId) {
-                        $('#tblStatu1').append(`<tr>
-                            <td>${(element.customer.title).substring(0, 10)}</td>
-                            <td>${element.saleCount} ${birimler[element.purchaseItem.product.groupUnit]}</td>
-                            </tr>`)
-                        console.log(element)
+                        $('#tblStatu1').append(`<li class="list-group-item">
+                        <span class="badge bg-secondary me-2">${element.saleCount} ${birimler[element.purchaseItem.product.groupUnit]}</span>${(element.customer.title).substring(0, 10)}</li>`)
                     }
                 });
             })
@@ -108,11 +105,9 @@
                 headers: { "Authorization": localStorage.getItem('token') }
             }).then(response => {
                 response.forEach(element => {
-                    if (element.purchaseItem.purchaseItemId == PurItemId){
-                        $('#tblStatu2').append(`<tr>
-                            <td>${(element.customer.title).substring(0, 10)}</td>
-                            <td>${element.saleCount} ${birimler[element.purchaseItem.product.groupUnit]}</td>
-                            </tr>`)
+                    if (element.purchaseItem.purchaseItemId == PurItemId) {
+                        $('#tblStatu2').append(`<li class="list-group-item">
+                        <span class="badge bg-secondary me-2">${element.saleCount} ${birimler[element.purchaseItem.product.groupUnit]}</span>${(element.customer.title).substring(0, 10)}</li>`)
                     }
                 });
             })
