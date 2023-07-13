@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+
     <title>ÇelsanApp</title>
     <link rel="icon" type="image/x-icon" href="public/img/favicon-32x32.png">
+
     <link href="public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="public/css/sb-admin-2.min.css" rel="stylesheet">
@@ -17,7 +19,8 @@
 
 <body id="page-top">
     <div id="wrapper">
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar"></ul>
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar"></ul>
+
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -27,39 +30,31 @@
                 </nav>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12">
-                            <div class="card shadow-sm">
+                        <div class="col-12 col-lg-4">
+                            <div class="card">
                                 <div class="card-body">
-                                    <form>
-                                        <div class="row mt-2">
-                                            <div class="col-12 col-xl-2 mb-2">
-                                                <input type="search" id="txtSearch" class="form-control" placeholder="Ara" aria-label="Ara">
-                                            </div>
-                                            <div class="col-12 col-xl-2">
-                                                <input type="text" class="form-control" name="daterange" />
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <div class="row">
-                                        <div class="col">
-                                            <table class="table table-hover mt-2">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="col-8">MÜŞTERİ</th>
-                                                        <th class="col-2">TARİH</th>
-                                                        <th class="col-1">SEVK</th>
-                                                        <th class="col-1">DETAY</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="list"></tbody>
-                                            </table>
-                                            <p style="font-weight: lighter; font-style: italic;" id="listCount"></p>
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="dia">Halat Çapı</label>
+                                        <input type="number" class="form-control" id="dia">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="makara_cap">Makara Çapı</label>
+                                        <input type="number" class="form-control" id="makara_cap">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="derinlik">Yanak Derinliği</label>
+                                        <input type="number" class="form-control" id="derinlik">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="aralik">Yanak Aralığı</label>
+                                        <input type="number" class="form-control" id="aralik">
+                                    </div>
+                                    <button class="btn btn-primary" onclick="Start()">Hesapla</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <footer class="sticky-footer bg-white">
@@ -79,8 +74,7 @@
     <script src="public/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="public/js/sb-admin-2.min.js"></script>
     <script src="public/script/layout.js"></script>
-    <script src="public/script/Authorization.js"></script>
-    <script src="public/script/sales.js"></script>
+    <script src="public/script/capacity.js"></script>
 </body>
 
 </html>

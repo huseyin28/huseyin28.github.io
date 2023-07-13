@@ -2,7 +2,7 @@ function login() {
     let rt = false;
     $.ajax({
         type: "POST",
-        async : false,
+        async: false,
         url: 'https://app.dipendo.com/oauth/token',
         data: { "username": "huseyinyilmaz@celsancelik.com", "password": "asdasd528", "grant_type": "password", "client_id": "DipendoWeb" },
         success: response => {
