@@ -14,12 +14,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
     <script>
-        function onScanSuccess(decodedText, decodedResult) {
+        var html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", { fps: 10 });
+        html5QrcodeScanner.render(function (decodedText, decodedResult) {
             location.assign('./productDetail.html' + decodedText.replaceAll('dipendo://info', ''))
-        }
-
-        var html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 250 });
-        html5QrcodeScanner.render(onScanSuccess);
+        });
     </script>
 </body>
 
