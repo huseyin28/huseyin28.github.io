@@ -14,7 +14,27 @@
     <link href="public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="public/css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        .loading-spinner {
+            width: 30px;
+            height: 30px;
+            border: 2px solid indigo;
+            border-radius: 50%;
+            border-top-color: #0001;
+            display: inline-block;
+            animation: loadingspinner .7s linear infinite;
+        }
 
+        @keyframes loadingspinner {
+            0% {
+                transform: rotate(0deg)
+            }
+
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -33,29 +53,32 @@
                         <div class="col-12 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="pid">Ürün Kimliği</label>
-                                        <input type="number" class="form-control" id="pid">
+                                    <div class="input-group">
+                                        <input id="pid" type="text" class="form-control" placeholder="Ürün kimliği">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button" onclick="Getir()">Getir</button>
+                                        </div>
                                     </div>
-                                    <button class="btn btn-primary" onclick="Getir()">Getir</button>
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-12 mt-2 ">
                             <div class="card">
                                 <div class="card-body">
+                                    <small id="productName"></small>
                                     <table class="table table-bordered">
+                                        <tr class="text-danger">
+                                            <td><b>Stok Miktarı : </b></td>
+                                            <td><b id="stockCount"></b></td>
+                                        </tr>
                                         <tr>
                                             <td>Ürün Kimliği : </td>
-                                            <td id="txtPid"></td>
+                                            <td class="text-primary font-weight-bolder" id="txtPid"></td>
                                         </tr>
                                         <tr>
                                             <td>Satın Alınan : </td>
                                             <td id="purchaseCount"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Stok Miktarı : </td>
-                                            <td id="stockCount"></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -67,52 +90,37 @@
                                     <div class="card-header" id="headingOne">
                                         <h2 class="mb-0">
                                             <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                Kesilecek <span class="badge badge-secondary float-right" id="kesileceklerToplam"></span>
+                                                Kesilecek <span class="badge badge-danger float-right" id="kesileceklerToplam"></span>
                                             </button>
                                         </h2>
                                     </div>
 
-                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-                                        data-parent="#accordionExample">
-                                        <div class="card-body text-nowrap overflow-hidden"
-                                            style="overflow: hidden !important; text-overflow: ellipsis;"
-                                            id="kesilecekler"></div>
+                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div class="card-body text-nowrap overflow-hidden" style="overflow: hidden !important; text-overflow: ellipsis;" id="kesilecekler"></div>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-header" id="headingTwo">
                                         <h2 class="mb-0">
-                                            <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                                data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-                                                aria-controls="collapseTwo">
-                                                Bekleyen <span class="badge badge-warning float-right"
-                                                    id="bekleyenlerToplam"></span>
+                                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                Bekleyen <span class="badge badge-warning float-right" id="bekleyenlerToplam"></span>
                                             </button>
                                         </h2>
                                     </div>
-                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                        data-parent="#accordionExample">
-                                        <div class="card-body text-nowrap overflow-hidden"
-                                            style="overflow: hidden !important; text-overflow: ellipsis;"
-                                            id="bekleyenler"></div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                        <div class="card-body text-nowrap overflow-hidden" style="overflow: hidden !important; text-overflow: ellipsis;" id="bekleyenler"></div>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-header" id="headingThree">
                                         <h2 class="mb-0">
-                                            <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                                data-toggle="collapse" data-target="#collapseThree"
-                                                aria-expanded="false" aria-controls="collapseThree">
-                                                Gönderilen <span class="badge badge-success float-right"
-                                                    id="gonderilenlerToplam"></span>
+                                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                Gönderilen <span class="badge badge-success float-right" id="gonderilenlerToplam"></span>
                                             </button>
                                         </h2>
                                     </div>
-                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                        data-parent="#accordionExample">
-                                        <div class="card-body text-nowrap overflow-hidden"
-                                            style="overflow: hidden !important; text-overflow: ellipsis;"
-                                            id="gonderilenler"></div>
+                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                        <div class="card-body text-nowrap overflow-hidden" style="overflow: hidden !important; text-overflow: ellipsis;" id="gonderilenler"></div>
                                     </div>
                                 </div>
                             </div>
@@ -128,6 +136,17 @@
                     </div>
                 </div>
             </footer>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-loading" data-backdrop="static">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="loading-spinner mb-2"></div>
+                    <div>Yükleniyor...</div>
+                </div>
+            </div>
         </div>
     </div>
 

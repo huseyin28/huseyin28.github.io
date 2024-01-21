@@ -1,13 +1,20 @@
+$(document).ajaxStart(function () {
+    $('#modal-loading').modal('show');
+}).ajaxStop(function () {
+    $('#modal-loading').modal('hide');
+});
+
+$(document).ready(Getir)
 async function Getir() {
     const ID = $('#pid').val()
 
     let control = await loginControl();
-    if(control){
+    if (control) {
         getStockCount(ID || 53701)
-    }else{
-        if(await login()){
+    } else {
+        if (await login()) {
             getStockCount(ID || 53701)
-        }else{
+        } else {
             alert('İşlem başarısız lütfen daha sonra tekrar deneyin')
         }
     }
@@ -21,8 +28,9 @@ function getStockCount(pid) {
         }
     }).then(response => {
         console.log(response)
-        $('#purchaseCount').html(response.purchaseCount+' m');
-        $('#stockCount').html(response.stockCount+' m');
+        $('#productName').html(response.product.name)
+        $('#purchaseCount').html(response.purchaseCount + ' m');
+        $('#stockCount').html(response.stockCount + ' m');
         $('#txtPid').html(response.purchaseItemId);
         getOthers(response.product.id, pid)
     }).fail(err => {
